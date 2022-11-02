@@ -2,4 +2,15 @@
     <%    errors.forEach(function(error){ %>
     <p> <%= error.msg %></p>
     <%    })        %>
-    <% } %>
+<% } %>
+
+<% if(success_msg!= '') { %>
+    <p><%=success_msg %> </p>
+<% } %>
+
+
+<% if(errror_msg != '') { %>
+    <p><%=errror_msg  %> </p>
+<% } %>
+
+

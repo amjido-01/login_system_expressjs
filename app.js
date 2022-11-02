@@ -2,7 +2,9 @@ const express = require('express');
 const expressEjsLayout = require('express-ejs-layouts');
 const mongoose = require('mongoose');
 const router = express.Router();
-const morgan = require('morgan')
+const morgan = require('morgan');
+const session = require('express-session');
+const flash = require('connect-flash');
 
 const app = express();
 
@@ -22,7 +24,24 @@ app.use(expressEjsLayout);
 app.set('view engine', 'ejs');
 
 // BodyParser
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({extended: false}));
+
+// Express-session
+app.use(session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: true,
+}));
+
+// use flash
+app.use(flash());
+// Global variables
+app.use((req, res, next) => {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.errror_msg = req.flash('error_msg');
+    next()
+})
+
 
 app.use(morgan('tiny'))
 
