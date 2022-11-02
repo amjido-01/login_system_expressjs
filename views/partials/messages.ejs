@@ -9,8 +9,10 @@
 <% } %>
 
 
-<% if(errror_msg != '') { %>
-    <p><%=errror_msg  %> </p>
+<% if(error_msg != '') { %>
+    <%= error_msg %> 
+<% } %> 
+
+<% if(error != '') { %>
+    <%= error %>
 <% } %>
-
-
