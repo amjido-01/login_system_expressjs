@@ -1,6 +1,7 @@
 const express = require('express');
 const expressEjsLayout = require('express-ejs-layouts');
 const mongoose = require('mongoose');
+const router = express.Router();
 
 const app = express();
 
